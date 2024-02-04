@@ -25,6 +25,8 @@ class CarSummaryCase implements ICarSummaryCase
         foreach ($products_request as $product) {
             $products_hashMap[$product['id']] = $product;
         }
+        $summary['total'] = 0;
+        $summary['products'] = [];
         foreach ($models as $model) {
             $id = intval($model->id);
             $data = [
@@ -33,7 +35,8 @@ class CarSummaryCase implements ICarSummaryCase
                 'name' => $model->name,
                 'total' => $products_hashMap[$id]['quantity'] * $model->price
             ];
-            array_push($summary,$data);
+            array_push($summary['products'],$data);
+            $summary['total'] += $data['total'];
         }
         return $summary;
     }
