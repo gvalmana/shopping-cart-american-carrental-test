@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseRepository
 {
-    protected Model $model;
-    public function __construct(Model $model)
+    protected $model;
+    public function __construct($model)
     {
         $this->model = $model;
     }

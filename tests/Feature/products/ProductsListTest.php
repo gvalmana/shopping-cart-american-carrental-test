@@ -46,6 +46,6 @@ class ProductsListTest extends TestCase
     public function test_product_can_not_be_found(): void
     {
         $response = $this->get('/api/v1/products/100');
-        $response->assertStatus(500);
+        $response->assertStatus(404);
     }
 }

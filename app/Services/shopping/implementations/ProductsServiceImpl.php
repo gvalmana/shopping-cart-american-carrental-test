@@ -11,13 +11,13 @@ class ProductsServiceImpl implements IProductsService
     {
         $this->productsRepository = $productsRepository;
     }
-    public function getProducts(): array
+    public function getProducts()
     {
         return $this->productsRepository->all();
     }
 
     public function getProduct($id){
-        return [];
+        return $this->productsRepository->find($id);
     }
 }
 

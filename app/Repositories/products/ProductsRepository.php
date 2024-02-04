@@ -8,6 +8,6 @@ class ProductsRepository extends BaseRepository implements IProductsRepository
     protected $model = Product::class;
     public function __construct()
     {
-        parent::__construct($this->model);
+        parent::__construct(new $this->model);
     }
 }
