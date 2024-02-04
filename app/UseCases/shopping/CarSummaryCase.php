@@ -20,24 +20,22 @@ class CarSummaryCase implements ICarSummaryCase
         $products_request = $request->products;
         $products_ids = array_column($products_request, 'id');
         $models = $this->productsRepository->findByIds($products_ids);
-        $summary =[];
-        $products_hashMap = [];
-        foreach ($products_request as $product) {
-            $products_hashMap[$product['id']] = $product;
-        }
-        $summary['total'] = 0;
-        $summary['products'] = [];
-        foreach ($models as $model) {
-            $id = intval($model->id);
-            $data = [
-                'id' => $model->id,
-                'price' => $model->price,
-                'name' => $model->name,
-                'total' => $products_hashMap[$id]['quantity'] * $model->price
-            ];
-            array_push($summary['products'],$data);
-            $summary['total'] += $data['total'];
-        }
+
+        $summary = [
+            'total' => 0,
+            'products' => array_map(function ($model) use ($products_request) {
+                $product = collect($products_request)->firstWhere('id', $model['id']);
+                return [
+                    'id' => $model['id'],
+                    'price' => $model['price'],
+                    'name' => $model['name'],
+                    'total' => $product['quantity'] * $model['price'], // total = quantity * price
+                ];
+            }, $models->toArray())
+        ];
+
+        $summary['total'] = array_sum(array_column($summary['products'], 'total'));
+
         return $summary;
     }
 }
