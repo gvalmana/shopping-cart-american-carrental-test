@@ -83,4 +83,37 @@ class CarsSummaryNumbersTest extends TestCase
         $response->assertJson($jsonresponse);
         $response->assertSuccessful();
     }
+
+    public function test_correct_numbers_with_randoms_data():void
+    {
+        $producto1 = Product::factory()->create();
+        $quantity = rand(1, 10);
+        $grand_total = $quantity * $producto1->price;
+        $data = [
+            'products' => [
+                [
+                    'id' => $producto1->id,
+                    'quantity' => $quantity
+                ]
+            ]
+        ];
+        $response = $this->postJson(route('cars.summary'), $data);
+        $jsonresponse = [
+            'success' => true,
+            'type'=>'success',
+            'data' => [
+                'products' => [
+                    [
+                        'id' => $producto1->id,
+                        'price' => $producto1->price,
+                        'name' => $producto1->name,
+                        'total' => $quantity * $producto1->price
+                    ]
+                ],
+                'total' => $grand_total
+            ],
+        ];
+        $response->assertJson($jsonresponse);
+        $response->assertSuccessful();
+    }
 }
