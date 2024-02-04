@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Products;
+namespace Database\Factories\shopping;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,6 +18,9 @@ class ProductFactory extends Factory
     {
         return [
             //
+            'name' => fake()->name(),
+            'code' => fake()->ean8(),
+            'price' => fake()->numberBetween(100, 1000),
         ];
     }
 }

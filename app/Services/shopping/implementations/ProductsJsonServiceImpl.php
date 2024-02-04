@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\implementations;
+namespace App\Services\shopping\implementations;
 
-use App\Services\IProductsService;
+use App\Services\shopping\IProductsService;
 
 class ProductsJsonServiceImpl implements IProductsService
 {
@@ -20,6 +20,6 @@ class ProductsJsonServiceImpl implements IProductsService
 
     private function loadProductsFromJson()
     {
-        return json_decode(file_get_contents(__DIR__ . "/../../../resources/products.json"), true);
+        return json_decode(file_get_contents(__DIR__ . "/../../../../resources/products.json"), true);
     }
 }

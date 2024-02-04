@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\products;
+namespace App\Http\Controllers\shopping;
 
 use App\Http\Controllers\Controller;
-use App\Services\IProductsService;
+use App\Services\shopping\IProductsService;
 use App\Traits\HttpResponsable;
 use Illuminate\Http\Request;
 
