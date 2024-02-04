@@ -15,9 +15,9 @@ class ProductsListTest extends TestCase
     }
     public function test_products_can_be_listed(): void
     {
-        $response = $this->get('/api/v1/products');
+        $response = $this->get(route('products.index'));
 
-        $response->assertStatus(200);
+        $response->assertSuccessful();
         $response->assertJsonCount(3, 'data');
         $response->assertJsonStructure([
             'data' => [

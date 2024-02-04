@@ -15,8 +15,8 @@ class ProductShowTest extends TestCase
     }
     public function test_product_can_be_obtained(): void
     {
-        $response = $this->get('/api/v1/products/1');
-        $response->assertStatus(200);
+        $response = $this->get(route('products.show', 1));
+        $response->assertSuccessful();
         $response->assertJsonStructure([
             'data' => [
                 'id',
@@ -31,7 +31,7 @@ class ProductShowTest extends TestCase
 
     public function test_product_can_not_be_found(): void
     {
-        $response = $this->get('/api/v1/products/100');
+        $response = $this->get(route('products.show', 100));
         $response->assertStatus(404);
     }
 }

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\shopping;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class CarSummaryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'products'=>['required', 'array', 'min:1'],
+            'products.*.id' => ['required', 'integer', 'exists:products,id'],
+            'products.*.quantity' => ['required', 'integer', 'min:1'],
         ];
     }
 }

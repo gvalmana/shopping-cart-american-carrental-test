@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\shopping\CarsController;
 use App\Http\Controllers\shopping\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function () {
-    Route::get('products', [ProductController::class, 'index']);
-    Route::get('products/{id}', [ProductController::class, 'show']);
+    Route::get('products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('products/{id}', [ProductController::class, 'show'])->name('products.show');
+    Route::post('summary', [CarsController::class, 'summary'])->name('cars.summary');
 });
