@@ -23,6 +23,6 @@ class Product extends Model
         'deleted_at'
     ];
     protected $casts = [
-        'price' => 'float'
+        'total' => 'decimal:2',
     ];
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\shopping;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCarItemRequest extends FormRequest
+class StoreCarItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

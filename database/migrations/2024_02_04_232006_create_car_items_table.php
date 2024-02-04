@@ -15,10 +15,6 @@ return new class extends Migration
     {
         Schema::create('car_items', function (Blueprint $table) {
             $table->id();
-            $table->string('client_name')->nullable();
-            $table->string('client_email')->nullable();
-            $table->string('client_phone')->nullable();
-            $table->decimal('total', 10, 2);
             $table->unsignedBigInteger('quantity');
             $table->timestamps();
             $table->foreignIdFor(CarOrder::class, 'car_order_id');
