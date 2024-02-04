@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\products;
+namespace App\Repositories\shopping;
 
 use App\Repositories\BaseRepository;
 use App\Models\shopping\Product;

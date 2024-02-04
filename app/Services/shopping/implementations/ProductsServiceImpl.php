@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\shopping\implementations;
 
-use App\Repositories\products\IProductsRepository;
+use App\Repositories\shopping\IProductsRepository;
 use App\Services\shopping\IProductsService;
 
 class ProductsServiceImpl implements IProductsService

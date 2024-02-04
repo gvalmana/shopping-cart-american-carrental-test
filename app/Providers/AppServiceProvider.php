@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\products\IProductsRepository;
-use App\Repositories\products\ProductsRepository;
+use App\Repositories\shopping\IProductsRepository;
+use App\Repositories\shopping\ProductsRepository;
 use App\Services\shopping\implementations\ProductsJsonServiceImpl;
 use App\Services\shopping\implementations\ProductsServiceImpl;
 use App\Services\shopping\IProductsService;
