@@ -12,10 +12,14 @@ class ProductsJsonServiceImpl implements IProductsService
         return $this->loadProductsFromJson();
     }
 
+    public function getProduct($id){
+
+        $data = $this->loadProductsFromJson();
+        return $data[$id-1];
+    }
+
     private function loadProductsFromJson()
     {
-        return [
-            "products" => json_decode(file_get_contents(__DIR__ . "/../../../resources/products.json"), true)
-        ];
+        return json_decode(file_get_contents(__DIR__ . "/../../../resources/products.json"), true);
     }
 }

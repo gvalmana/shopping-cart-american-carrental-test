@@ -4,47 +4,21 @@ namespace App\Http\Controllers\products;
 
 use App\Http\Controllers\Controller;
 use App\Services\IProductsService;
+use App\Traits\HttpResponsable;
 use Illuminate\Http\Request;
 
 final class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(IProductsService $ProductsServiceervice)
+    use HttpResponsable;
+    public function index(IProductsService $productService)
     {
-        return response(['products' => []], 200);
+        $data = $productService->getProducts();
+        return $this->makeResponseOK($data, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show(string $id, IProductsService $productService)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $data = $productService->getProduct($id);
+        return $this->makeResponseOK($data, 200);
     }
 }
