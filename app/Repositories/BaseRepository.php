@@ -47,4 +47,9 @@ abstract class BaseRepository
         $model->restore();
         return $model;
     }
+
+    public function findByIds(array $ids)
+    {
+        return $this->model->findMany($ids);
+    }
 }

@@ -7,6 +7,8 @@ use App\Repositories\shopping\ProductsRepository;
 use App\Services\shopping\implementations\ProductsJsonServiceImpl;
 use App\Services\shopping\implementations\ProductsServiceImpl;
 use App\Services\shopping\IProductsService;
+use App\UseCases\shopping\CarSummaryCase;
+use App\UseCases\shopping\ICarSummaryCase;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         App::singleton(IProductsService::class, ProductsServiceImpl::class);
         App::bind(IProductsRepository::class, ProductsRepository::class);
+        App::bind(ICarSummaryCase::class, CarSummaryCase::class);
     }
 
     /**
