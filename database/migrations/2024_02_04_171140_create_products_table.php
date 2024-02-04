@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('code')->unique();
             $table->decimal('price', 8, 2);
+            $table->text('description');
+            $table->string('image');
             $table->softDeletes();
         });
     }

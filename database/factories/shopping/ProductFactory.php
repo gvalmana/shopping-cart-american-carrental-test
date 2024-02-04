@@ -21,6 +21,8 @@ class ProductFactory extends Factory
             'name' => fake()->name(),
             'code' => fake()->ean8(),
             'price' => fake()->numberBetween(100, 1000),
+            'description' => fake()->sentence(),
+            'image' => fake()->imageUrl()
         ];
     }
 }

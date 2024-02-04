@@ -14,10 +14,15 @@ class Product extends Model
         'name',
         'code',
         'price',
+        'description',
+        'image'
     ];
     protected $hidden = [
         'created_at',
         'updated_at',
         'deleted_at'
+    ];
+    protected $casts = [
+        'price' => 'float'
     ];
 }
