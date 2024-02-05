@@ -12,9 +12,76 @@ use Illuminate\Http\Request;
 class CarsController extends Controller
 {
     use HttpResponsable;
+    /**
+    * @OA\Post(
+    *     path="/api/v1/cars/summary",
+    *     summary="Mostrar Resumen",
+    *     tags={"Cars"},
+    *     @OA\RequestBody(
+    *         required=true,
+    *         @OA\JsonContent(
+    *             required={"products"},
+    *              @OA\Property(
+    *                  property="products",
+    *                  type="array",
+    *                  @OA\Items(
+    *                      type="object",
+    *                      required={"id","quantity"},
+    *                      @OA\Property(property="id", type="integer", example="1"),
+    *                      @OA\Property(property="quantity", type="integer", example="2"),
+    *                  ),
+    *              ),
+    *         ),
+    *     ),
+    *     @OA\Response(
+    *         response=200,
+    *         description="Resumen obtenido con éxito.",
+    *         @OA\JsonContent(
+    *             @OA\Property(property="success", type="boolean", example="true"),
+    *             @OA\Property(property="type", type="string", example="success"),
+    *             @OA\Property(property="message", type="string", example="OK"),
+    *         )
+    *     ),
+    *     @OA\Response(
+    *         response=422,
+    *         description="Datos de entrada no válidos",
+    *         @OA\JsonContent(
+    *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+    *          @OA\Property(
+    *              property="errors",
+    *              type="object",
+    *              @OA\Property(
+    *                  property="products",
+    *                  type="array",
+    *                  @OA\Items(
+    *                      type="string",
+    *                      example="The products field is required."
+    *                  ),
+    *              ),
+    *              @OA\Property(
+    *                  property="products.0.id",
+    *                  type="array",
+    *                  @OA\Items(
+    *                      type="string",
+    *                      example="The products.0.id field is required."
+    *                  ),
+    *              ),
+    *              @OA\Property(
+    *                  property="products.0.quantity",
+    *                  type="array",
+    *                  @OA\Items(
+    *                      type="string",
+    *                      example="The products.0.quantity field is required."
+    *                  ),
+    *              ),
+    *          ),
+    *         )
+    *     )
+    * )
+    */
     public function summary(CarSummaryRequest $request, ICarSummaryCase $carSummaryCase)
     {
         $data = $carSummaryCase->makeSummary($request);
-        return $this->makeResponseOK($data);
+        return $this->makeResponseOK($data,"OK");
     }
 }
