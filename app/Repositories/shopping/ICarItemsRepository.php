@@ -1,9 +1,7 @@
 <?php
 namespace App\Repositories\shopping;
 
-use Illuminate\Database\Eloquent\Model;
-
-interface IProductsRepository
+interface ICarItemsRepository
 {
     public function __construct();
     public function all();

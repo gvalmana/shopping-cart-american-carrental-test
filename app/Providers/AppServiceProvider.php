@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\shopping\CartItemsRepository;
+use App\Repositories\shopping\ICarItemsRepository;
 use App\Repositories\shopping\IOrdersRepository;
 use App\Repositories\shopping\IProductsRepository;
 use App\Repositories\shopping\OrdersRepository;
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //Repositories
         App::bind(IProductsRepository::class, ProductsRepository::class);
         App::bind(IOrdersRepository::class, OrdersRepository::class);
+        App::bind(ICarItemsRepository::class, CartItemsRepository::class);
         //Case Uses
         App::singleton(ICarSummaryCase::class, CarSummaryCase::class);
         App::singleton(ISendOrderCase::class, SendOrderCase::class);
