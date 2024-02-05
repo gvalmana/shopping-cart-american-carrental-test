@@ -43,6 +43,32 @@ class MakeOrderTest extends TestCase
         $this->assertDatabaseHas('car_items', ['quantity' => 2, 'car_order_id' => 1,'product_id' => 1]);
         $this->assertDatabaseHas('car_items', ['quantity' => 1, 'car_order_id' => 1,'product_id' => 2]);
         $this->assertDatabaseCount('car_items', 2);
+        $response->assertJsonStructure([
+            'success',
+            'type',
+            'data'=>[
+                'id',
+                'client_name',
+                'client_phone',
+                'client_email',
+                'date',
+                'total',
+                'items'=>[
+                    [
+                        'quantity',
+                        'total',
+                        'product'=>[
+                            'id',
+                            'name',
+                            'description',
+                            'price',
+                            'image',
+                            'code'
+                        ]
+                    ]
+                ]
+            ],
+        ]);
     }
     public function test_make_order_with_three_products()
     {
@@ -78,5 +104,31 @@ class MakeOrderTest extends TestCase
         $this->assertDatabaseHas('car_items', ['quantity' => 1, 'car_order_id' => 1,'product_id' => 2]);
         $this->assertDatabaseHas('car_items', ['quantity' => 1, 'car_order_id' => 1,'product_id' => 3]);
         $this->assertDatabaseCount('car_items', 3);
+        $response->assertJsonStructure([
+            'success',
+            'type',
+            'data'=>[
+                'id',
+                'client_name',
+                'client_phone',
+                'client_email',
+                'date',
+                'total',
+                'items'=>[
+                    [
+                        'quantity',
+                        'total',
+                        'product'=>[
+                            'id',
+                            'name',
+                            'description',
+                            'price',
+                            'image',
+                            'code'
+                        ]
+                    ]
+                ]
+            ],
+        ]);
     }
 }

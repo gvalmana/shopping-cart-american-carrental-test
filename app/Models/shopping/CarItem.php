@@ -16,6 +16,10 @@ class CarItem extends Model
     ];
 
     protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
         'car_order_id',
         'product_id',
         'deleted_at',
