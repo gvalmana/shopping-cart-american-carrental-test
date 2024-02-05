@@ -20,7 +20,7 @@ final class ProductController extends Controller
     * @OA\Get(
     *     path="/api/v1/products",
     *     summary="Mostrar productos",
-    *     tags={"Products"},
+    *     tags={"Productos"},
     *     @OA\Response(
     *         response=200,
     *         description="Mostrar todos los productos."
@@ -34,13 +34,13 @@ final class ProductController extends Controller
     public function index(IProductsService $productService)
     {
         $data = $productService->getProducts();
-        return $this->makeResponseOK($data,"Mostrando todos los productos");
+        return $this->makeResponseOK($data,"OK");
     }
 
     /**
     * @OA\Get(
     *     path="/api/v1/products/{id}",
-    *     tags={"Products"},
+    *     tags={"Productos"},
     *     @OA\Parameter(
     *         name="id",
     *         in="path",
@@ -63,6 +63,6 @@ final class ProductController extends Controller
     public function show(string $id, IProductsService $productService)
     {
         $data = $productService->getProduct($id);
-        return $this->makeResponseOK($data,"Mostrando el producto con ID: $id");
+        return $this->makeResponseOK($data,"OK");
     }
 }

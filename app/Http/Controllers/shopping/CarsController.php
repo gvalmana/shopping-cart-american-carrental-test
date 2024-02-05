@@ -16,7 +16,7 @@ class CarsController extends Controller
     * @OA\Post(
     *     path="/api/v1/cars/summary",
     *     summary="Mostrar Resumen",
-    *     tags={"Cars"},
+    *     tags={"Carritos de compra"},
     *     @OA\RequestBody(
     *         required=true,
     *         @OA\JsonContent(

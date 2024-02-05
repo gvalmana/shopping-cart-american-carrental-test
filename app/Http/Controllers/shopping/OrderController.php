@@ -16,7 +16,7 @@ class OrderController extends Controller
      * @OA\Post(
      *     path="/api/v1/cars/order",
      *     summary="Realizar orden de compra",
-     *     tags={"Cars"},
+     *     tags={"Carritos de compra"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -73,6 +73,30 @@ class OrderController extends Controller
      *         @OA\Property(
      *              property="errors",
      *              type="object",
+     *              @OA\Property(
+     *                  property="client_name",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string",
+     *                      example="The client name field is required."
+     *                  ),
+     *              ),
+     *              @OA\Property(
+     *                  property="client_email",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string",
+     *                      example="The client email field is required."
+     *                  ),
+     *              ),
+     *              @OA\Property(
+     *                  property="client_phone",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string",
+     *                      example="The client phone field is required."
+     *                  ),
+     *              ),
      *              @OA\Property(
      *                  property="products",
      *                  type="array",

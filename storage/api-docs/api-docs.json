@@ -13,7 +13,7 @@
         "/api/v1/cars/summary": {
             "post": {
                 "tags": [
-                    "Cars"
+                    "Carritos de compra"
                 ],
                 "summary": "Mostrar Resumen",
                 "operationId": "bbdbbeb9d4dd998412486ce7b67554a9",
@@ -160,7 +160,7 @@
         "/api/v1/cars/order": {
             "post": {
                 "tags": [
-                    "Cars"
+                    "Carritos de compra"
                 ],
                 "summary": "Realizar orden de compra",
                 "operationId": "ef4d7b70b76ada63808b1907ce27b995",
@@ -327,6 +327,27 @@
                                         },
                                         "errors": {
                                             "properties": {
+                                                "client_name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The client name field is required."
+                                                    }
+                                                },
+                                                "client_email": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The client email field is required."
+                                                    }
+                                                },
+                                                "client_phone": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The client phone field is required."
+                                                    }
+                                                },
                                                 "products": {
                                                     "type": "array",
                                                     "items": {
@@ -363,7 +384,7 @@
         "/api/v1/products": {
             "get": {
                 "tags": [
-                    "Products"
+                    "Productos"
                 ],
                 "summary": "Mostrar productos",
                 "operationId": "436bb320702324d6b7aea6a4993d692f",
@@ -380,7 +401,7 @@
         "/api/v1/products/{id}": {
             "get": {
                 "tags": [
-                    "Products"
+                    "Productos"
                 ],
                 "summary": "Mostrar producto",
                 "operationId": "12c3b5c0331b16ee7bc98e5aa8365318",
