@@ -40,6 +40,15 @@ class CarsController extends Controller
     *             @OA\Property(property="success", type="boolean", example="true"),
     *             @OA\Property(property="type", type="string", example="success"),
     *             @OA\Property(property="message", type="string", example="OK"),
+    *             @OA\Property(property="data", type="object",
+    *                 @OA\Property(property="total", type="integer", example="200"),
+    *                 @OA\Property(property="products", type="array", @OA\Items(
+    *                     @OA\Property(property="id", type="integer", example="1"),
+    *                     @OA\Property(property="price", type="float", example=20.5),
+    *                     @OA\Property(property="name", type="string", example="Carro 1"),
+    *                     @OA\Property(property="total", type="float", example=20.19),
+    *       )),
+    *           ),
     *         )
     *     ),
     *     @OA\Response(

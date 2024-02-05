@@ -70,6 +70,244 @@
                                         "message": {
                                             "type": "string",
                                             "example": "OK"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "total": {
+                                                    "type": "integer",
+                                                    "example": "200"
+                                                },
+                                                "products": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": "1"
+                                                            },
+                                                            "price": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "example": 20.5
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Carro 1"
+                                                            },
+                                                            "total": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "example": 20.19
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Datos de entrada no válidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "products": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The products field is required."
+                                                    }
+                                                },
+                                                "products.0.id": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The products.0.id field is required."
+                                                    }
+                                                },
+                                                "products.0.quantity": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The products.0.quantity field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cars/order": {
+            "post": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Realizar orden de compra",
+                "operationId": "ef4d7b70b76ada63808b1907ce27b995",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "products",
+                                    "client_name",
+                                    "client_email",
+                                    "client_phone"
+                                ],
+                                "properties": {
+                                    "client_name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "client_email": {
+                                        "type": "string",
+                                        "example": "kVqFP@example.com"
+                                    },
+                                    "client_phone": {
+                                        "type": "string",
+                                        "example": "+34 123 456 789"
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "id",
+                                                "quantity"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "quantity": {
+                                                    "type": "integer",
+                                                    "example": "2"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Compra realizada con éxito.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "OK"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "client_name": {
+                                                    "type": "string",
+                                                    "example": "John Doe"
+                                                },
+                                                "client_email": {
+                                                    "type": "string",
+                                                    "example": "kVqFP@example.com"
+                                                },
+                                                "client_phone": {
+                                                    "type": "string",
+                                                    "example": "+34 123 456 789"
+                                                },
+                                                "total": {
+                                                    "type": "integer",
+                                                    "example": "200"
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "example": "2024-02-05T02:47:59.000000Z"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "quantity": {
+                                                                "type": "integer",
+                                                                "example": "10"
+                                                            },
+                                                            "total": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "example": 20.19
+                                                            },
+                                                            "product": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "integer",
+                                                                        "example": "1"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "Product 1"
+                                                                    },
+                                                                    "price": {
+                                                                        "type": "number",
+                                                                        "format": "float",
+                                                                        "example": 10.99
+                                                                    },
+                                                                    "code": {
+                                                                        "type": "string",
+                                                                        "example": "ABC123"
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string",
+                                                                        "example": "Product 1 description"
+                                                                    },
+                                                                    "image": {
+                                                                        "type": "string",
+                                                                        "example": "https://example.com/image.jpg"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
