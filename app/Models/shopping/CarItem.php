@@ -25,8 +25,9 @@ class CarItem extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
+        'total' => 'decimal:2',
     ];
-
+    protected $appends = ['total'];
     public function carOrder()
     {
         return $this->belongsTo(CarOrder::class);
@@ -35,5 +36,10 @@ class CarItem extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->quantity * $this->product->price;
     }
 }

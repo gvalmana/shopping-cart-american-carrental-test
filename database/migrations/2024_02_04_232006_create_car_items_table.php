@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignIdFor(CarOrder::class, 'car_order_id');
             $table->foreignIdFor(Product::class, 'product_id');
+            $table->softDeletes();
         });
     }
 

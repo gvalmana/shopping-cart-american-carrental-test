@@ -13,7 +13,6 @@ class CarOrder extends Model
         'client_name',
         'client_email',
         'client_phone',
-        'total',
     ];
 
     protected $casts = [
@@ -23,8 +22,15 @@ class CarOrder extends Model
         'total' => 'decimal:2',
     ];
 
+    protected $appends = ['total'];
+
     public function items()
     {
         return $this->hasMany(CarItem::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->items->sum('total');
     }
 }
