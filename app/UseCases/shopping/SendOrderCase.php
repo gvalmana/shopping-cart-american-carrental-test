@@ -18,15 +18,12 @@ final class SendOrderCase implements ISendOrderCase
     }
     public function makeOrder(FormRequest $request)
     {
-        $models = $this->ordersRepository->create($request->input());
-        $products = $request->input('products');
-        foreach ($products as $product) {
-            $this->carItemsRepository->create([
-                'quantity' => $product['quantity'],
-                'car_order_id' => $models->id,
-                'product_id' => $product['id']
+        $model = $this->ordersRepository->create($request->input());
+        $this->carItemsRepository->createFromCar(
+            [
+                'products'=>$request->input('products'),
+                'order_id' => $model->id
             ]);
-        }
-        return $models;
+        return $model;
     }
 }
