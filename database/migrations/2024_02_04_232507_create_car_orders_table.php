@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('client_name')->nullable();
             $table->string('client_email')->nullable();
             $table->string('client_phone')->nullable();
-            $table->decimal('total', 10, 2);
+            $table->decimal('total', 10, 2)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

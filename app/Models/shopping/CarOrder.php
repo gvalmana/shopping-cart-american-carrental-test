@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class CarOrder extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillables = [
+    protected $fillable = [
         'client_name',
         'client_email',
         'client_phone',

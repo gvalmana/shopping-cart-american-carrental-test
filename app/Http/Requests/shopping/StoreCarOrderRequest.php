@@ -4,14 +4,14 @@ namespace App\Http\Requests\shopping;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCarOrderRequest extends FormRequest
+class StoreCarOrderRequest extends CarSummaryRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,11 @@ class StoreCarOrderRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        $rules = [
+            'client_name' => 'required',
+            'client_phone' => 'required',
+            'client_email' => 'required|email',
         ];
+        return array_merge($rules, parent::rules());
     }
 }
