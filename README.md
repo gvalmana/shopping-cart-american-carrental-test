@@ -8,3 +8,4 @@
 4- Ejecutar los test funcionales y unitarios para comprobar que el proceso de instalación ha sido correcto con el comando
 <code>php artisan test<code>
 5- Ejecutar la aplicación el servidor con el comando <code>php artisan serve --port=8000</code>
+6- Consultar al documentación de la API en el link http://localhost:8000/api/documentation#
