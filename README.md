@@ -6,6 +6,6 @@
 2- Configurar la base de datos en el fichero .env, puede copiarse el contenido .env.example
 3- ejecutar las migraciones con <code> php artisan migrate --seed</code> para cargar los datos de pruebas iniciales
 4- Ejecutar los test funcionales y unitarios para comprobar que el proceso de instalación ha sido correcto con el comando
-<code>php artisan test<code>
+<code>php artisan test</code>
 5- Ejecutar la aplicación el servidor con el comando <code>php artisan serve --port=8000</code>
 6- Consultar al documentación de la API en el link http://localhost:8000/api/documentation#
