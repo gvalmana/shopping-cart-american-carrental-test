@@ -22,7 +22,13 @@ class ProductFactory extends Factory
             'code' => fake()->ean8(),
             'price' => fake()->numberBetween(100, 1000),
             'description' => fake()->sentence(),
-            'image' => fake()->imageUrl()
+            'image' => fake()->randomElement([
+                'black_car.jpg',
+                'red_car.jpg',
+                'blue_classic_car.jpg',
+                'grey_classic_car.jpg',
+                'grey_car.jpg',
+            ]),
         ];
     }
 }
