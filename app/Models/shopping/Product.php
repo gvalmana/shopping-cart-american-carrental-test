@@ -5,6 +5,7 @@ namespace App\Models\shopping;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -25,4 +26,9 @@ class Product extends Model
     protected $casts = [
         'total' => 'decimal:2',
     ];
+
+    public function getImageAttribute()
+    {
+        return Storage::disk('products')->url($this->attributes['image']);
+    }
 }

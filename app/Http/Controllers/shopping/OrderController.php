@@ -42,7 +42,7 @@ class OrderController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="success", type="boolean", example="true"),
      *             @OA\Property(property="type", type="string", example="success"),
-     *             @OA\Property(property="message", type="string", example="OK"),
+     *             @OA\Property(property="message", type="string", example="Order created successfully"),
      *             @OA\Property(property="data", type="object",
      *                 @OA\Property(property="id", type="integer", example="1"),
      *                 @OA\Property(property="client_name", type="string", example="John Doe"),
@@ -129,6 +129,6 @@ class OrderController extends Controller
     public function order(StoreCarOrderRequest $request, ISendOrderCase $carSummaryCase)
     {
         $data = $carSummaryCase->makeOrder($request);
-        return $this->makeResponseOK(OrderResource::make($data), "OK");
+        return $this->makeResponseOK(OrderResource::make($data), "Order created successfully.");
     }
 }

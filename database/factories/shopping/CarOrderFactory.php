@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Factories\Shopping;
+namespace Database\Factories\shopping;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\shopping\CarItem>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\shopping\CarOrder>
  */
-class CarItemFactory extends Factory
+class CarOrderFactory extends Factory
 {
     /**
      * Define the model's default state.
