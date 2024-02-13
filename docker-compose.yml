@@ -4,7 +4,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name:  app
+        container_name:  app-php
         # restart: always
         tty: true
         volumes:
@@ -13,20 +13,29 @@ services:
         networks:
             - shopcart-network
 
-    nginx:
+    nginx-api:
         depends_on:
             - app
         build:
             context: ./nginx
             dockerfile: Dockerfile
-        container_name: api
+        container_name: api-php
         # restart: always
         tty: true
         ports:
             - "8081:80"
         networks:
             - shopcart-network
-
+    nginx-cliente:
+        depends_on:
+            - app
+        build:
+            context: ./car-rental-client-app/browser
+            dockerfile: Dockerfile
+        container_name: app-cliente
+        tty: true
+        ports:
+            - "8082:80"
 volumes:
     mysql-micro-service-deliveries:
 networks:
