@@ -28,7 +28,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions for php
 RUN docker-php-ext-install mbstring zip exif pcntl
-RUN docker-php-ext-install pdo
+RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install gd
 
 # Install composer (php package manager)
