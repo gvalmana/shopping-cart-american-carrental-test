@@ -36,8 +36,24 @@ services:
         tty: true
         ports:
             - "8082:80"
+        networks:
+            - shopcart-network
+    database:
+        image: mysql
+        container_name: database-shopcart
+        restart: always
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: shopcart
+            MYSQL_USER: shopcart
+        networks:
+            - shopcart-network
 volumes:
-    mysql-micro-service-deliveries:
+    mysql:
 networks:
   shopcart-network:
     driver: bridge
