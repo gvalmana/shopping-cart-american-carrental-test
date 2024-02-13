@@ -41,11 +41,12 @@ services:
     database:
         image: mariadb
         container_name: database-shopcart
-        restart: always
+        # restart: always
         ports:
             - "3308:3306"
         volumes:
-            - mysql:/var/lib/mysql
+            - mysql-shopcart:/var/lib/mysql
+            - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/
         environment:
             MARIADB_DATABASE: shopcart
             MARIADB_USER: shopcart
@@ -54,7 +55,7 @@ services:
         networks:
             - shopcart-network
 volumes:
-    mysql:
+    mysql-shopcart:
 networks:
-  shopcart-network:
-    driver: bridge
+    shopcart-network:
+        driver: bridge
