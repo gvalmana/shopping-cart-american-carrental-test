@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name:  app
+        # restart: always
+        tty: true
+        volumes:
+            - ./:/var/www/html/
+            - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+        networks:
+            - shopcart-network
+
+    nginx:
+        depends_on:
+            - app
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        container_name: api
+        # restart: always
+        tty: true
+        ports:
+            - "8081:80"
+        networks:
+            - shopcart-network
+
+volumes:
+    mysql-micro-service-deliveries:
+networks:
+  shopcart-network:
+    driver: bridge
