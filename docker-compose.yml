@@ -39,7 +39,7 @@ services:
         networks:
             - shopcart-network
     database:
-        image: mysql
+        image: mariadb
         container_name: database-shopcart
         restart: always
         ports:
@@ -47,9 +47,11 @@ services:
         volumes:
             - mysql:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: shopcart
-            MYSQL_USER: shopcart
+        environment:
+            MARIADB_DATABASE: shopcart
+            MARIADB_USER: shopcart
+            MARIADB_PASSWORD: shopcart
+            MARIADB_ROOT_PASSWORD: root
         networks:
             - shopcart-network
 volumes:
