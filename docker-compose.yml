@@ -47,7 +47,6 @@ services:
         volumes:
             - mysql:/var/lib/mysql
         environment:
-        environment:
             MARIADB_DATABASE: shopcart
             MARIADB_USER: shopcart
             MARIADB_PASSWORD: shopcart
