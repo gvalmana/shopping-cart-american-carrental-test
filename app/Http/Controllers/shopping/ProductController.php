@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 /**
 * @OA\Info(title="API Shop Cart", version="1.0")
 *
-* @OA\Server(url="http://localhost:8081")
+* @OA\Server(url="http://95.183.53.25:8081", description="Production Server")
+* @OA\Server(url="http://localhost:8081", description="Local Server")
 */
 final class ProductController extends Controller
 {
